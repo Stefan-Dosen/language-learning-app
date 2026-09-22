@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Translate</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<script src="translate.js"></script>
+		<link rel="stylesheet" href="style.css">	
+	</head>
+	<body>
+	
+		<label for="sentences">Translate sentences</label> <br><br>	
+		
+		<textarea id="sentences" name="sentences" rows="5" cols="33">Type your sentences here, seperate them by a new line.</textarea> <br><br>
+		
+		<label for="source">Translate from: </label>
+		<select id="source" name="source">
+		  <option value="en">English</option>
+		  <option value="es">Spanish</option>
+		  <option value="sr">Serbian</option>
+		  <option value="de">German</option>
+		  <option value="ru">Russian</option>
+		  <option value="gr">Greek</option>
+		  
+		</select>	<br>
+		
+		<label for="target">Translate to: </label>
+		<select id="target" name="target">
+		  <option value="es">Spanish</option>
+		  <option value="sr">Serbian</option>
+		  <option value="en">English</option>
+		  <option value="de">German</option>
+		  <option value="ru">Russian</option>
+		  <option value="el">Greek</option>
+		  
+		</select> <br><br>
+		
+		<button id="submit" type="submit" onclick="startTranslate()">Translate</button> <br><br><br><br><br><br><br><br>
+		
+		<a href="index.html">Read your module (csv file)</a>
+	</body>
+</html>
+

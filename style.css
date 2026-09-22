@@ -1,0 +1,293 @@
+/* Primjena glavne tamne pozadine na čitavu stranicu i tekst */
+html, body {
+    background-color: #092328;
+    color: #8BBB92;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Kontejner za dugmad kako bi bila uredno poređana */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Zajednički, čist stil za sva dugmad */
+#saveButton, #learn, #recall {
+    background-color: #12544F;
+    color: #8BBB92;
+    border: 1px solid #2A835F;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+/* Hover efekat za komandnu dugmad */
+#learn:hover, #recall:hover {
+    background-color: #2A835F;
+    color: #ffffff;
+    border-color: #8BBB92;
+}
+
+/* Moderan, istaknut izgled za Save Button koji se ne kolje sa paletom */
+#saveButton {
+    background-color: #2A835F;
+    color: #ffffff;
+    border-color: #2A835F;
+}
+
+#saveButton:hover {
+    background-color: #349c72;
+    border-color: #8BBB92;
+    box-shadow: 0 0 12px rgba(139, 187, 146, 0.3);
+}
+
+/* Klik efekat za sva dugmad */
+#saveButton:active, #learn:active, #recall:active {
+    transform: scale(0.97);
+}
+
+/* Kartice */
+.card {
+    position: relative; 
+    background-color: #12544F;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #2A835F;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    user-select: none;
+    cursor: default;
+    margin-bottom: 15px;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-color: #8BBB92;
+}
+
+/* Redni broj kartice u ćošku */
+.card p:first-of-type {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    color: #2A835F;       
+    font-size: 0.85rem;   
+    font-weight: 700;     
+    margin: 0;
+    font-family: monospace; 
+}
+
+/* Glavni tekst (Original) */
+.card p:nth-of-type(2) {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 15px 0 0 0; 
+}
+
+/* Sekundarni tekst (Prevod) */
+.card p:last-of-type {
+    color: #8BBB92;
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Drop zona za CSV */
+.drop-zone {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #12544F;
+    border: 2px dashed #2A835F;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.2s ease;
+    user-select: none;
+    cursor: pointer;
+}
+
+.drop-zone.drag-over {
+    border-color: #8BBB92;
+    background-color: #16615b;
+    transform: scale(1.02);
+}
+
+.drop-zone p {
+    color: #8BBB92;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.dropLoadedFile {
+    display: none;
+}
+
+/* Modovi rada (Learn / Recall tabela) */
+.learnMode, #learnMode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #12544F;
+  border-radius: 8px;
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  max-width: fit-content;
+  margin: 20px auto;
+  border: 1px solid #2A835F;
+}
+
+#learnMode table.options {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#learnMode table.options th {
+  padding: 10px 25px;
+  cursor: pointer;
+  color: #8BBB92;
+  transition: color 0.2s ease;
+  text-align: center;
+}
+
+#learnMode table.options th:first-child {
+  border-right: 2px solid #2A835F;
+}
+
+#learnMode table.options th:hover {
+  color: #ffffff;
+}
+
+/* Zvjezdice za ocjenjivanje */
+.fa-star {
+    color: #092328; /* Prazna zvijezda se stapa sa pozadinom ekrana */
+    text-shadow: 0 0 1px #2A835F; /* Ivica oko prazne zvijezde */
+    cursor: pointer;
+    margin: 15px 2px 0 2px;
+    font-size: 1.2rem;
+    transition: color 0.1s ease;
+}
+
+.checked {
+  color: #8BBB92 !important; /* Ispunjena zvijezda svijetli */
+  text-shadow: none;
+}
+/* Stil za sve samostalne linkove na stranici */
+a {
+    color: #8BBB92; /* Svijetlo zelena iz tvoje palete */
+    text-decoration: none; /* Uklanja ružnu podvučenu liniju */
+    font-weight: 600;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+    border-bottom: 1px dashed transparent; /* Suptilna priprema za hover */
+    cursor: pointer;
+}
+
+/* Hover efekat kada se pređe mišem preko linka */
+a:hover {
+    color: #ffffff; /* Tekst posvijetli u bijelo */
+    border-bottom: 1px solid #8BBB92; /* Pojavljuje se čista linija ispod */
+}
+
+/* Ako se link nalazi unutar nekog teksta/paragrafa da ga malo istakne */
+p a {
+    color: #8BBB92;
+    border-bottom: 1px dashed #2A835F;
+}
+
+p a:hover {
+    color: #ffffff;
+    border-bottom: 1px solid #8BBB92;
+}
+/* Stil za labele (tekst iznad polja) */
+label {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+/* Stil za veliko polje za unos teksta */
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #12544F;
+    color: #ffffff;
+    border: 1px solid #2A835F;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #8BBB92;
+    box-shadow: 0 0 8px rgba(139, 187, 146, 0.2);
+}
+
+/* Stil za padajuće menije */
+select {
+    width: 100%;
+    background-color: #12544F;
+    color: #ffffff;
+    border: 1px solid #2A835F;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+select:focus {
+    border-color: #8BBB92;
+}
+
+/* Izgled opcija unutar padajućeg menija */
+select option {
+    background-color: #092328;
+    color: #ffffff;
+}
+
+/* Stil za Translate dugme */
+button#submit {
+    width: 100%;
+    background-color: #2A835F;
+    color: #ffffff;
+    border: 1px solid #2A835F;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+button#submit:hover {
+    background-color: #349c72;
+    border-color: #8BBB92;
+    box-shadow: 0 0 12px rgba(139, 187, 146, 0.3);
+}
+
+button#submit:active {
+    transform: scale(0.98);
+}
